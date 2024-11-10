@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origin的博客网站</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            height: 100vh;
+            background: linear-gradient(to bottom, #87CEEB, #0F4C75); /* 从浅到深的渐变 */
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .left-side {
+            width: 30%; /* 左边区域大小 */
+            background-color: #0F4C75; /* 深天蓝色 */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .right-side {
+            width: 70%; /* 右边区域大小 */
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .profile {
+            text-align: center;
+        }
+
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+
+        .profile h1 {
+            font-size: 2em;
+            margin: 0;
+        }
+
+        .profile p {
+            font-size: 1.2em;
+            margin: 0;
+        }
+
+        .content {
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .content h2, .content p {
+            color: #333;
+        }
+
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0;
+            animation: appear 0.5s forwards;
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: scale(0); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body onclick="createParticles(event)">
+
+    <div class="left-side">
+        <div class="profile">
+            <img src="https://via.placeholder.com/100" alt="头像">
+            <h1>Origin</h1>
+            <p>个人简介</p>
+        </div>
+    </div>
+
+    <div class="right-side">
+        <div class="content">
+            <h2>欢迎来到我的博客</h2>
+            <p>北国风光，千里冰封，万里雪飘。<br>
+
+望长城内外，惟余莽莽；<br>
+
+大河上下，顿失滔滔。<br>
+
+山舞银蛇，原驰蜡象，欲与天公试比高。<br>
+
+须晴日，看红装素裹，分外妖娆。<br>
+
+江山如此多娇，引无数英雄竞折腰。<br>
+
+惜秦皇汉武，略输文采；<br>
+
+唐宗宋祖，稍逊风骚。<br>
+
+一代天骄，成吉思汗，只识弯弓射大雕。<br>
+
+俱往矣，数风流人物，还看今朝。</p>
+        </div>
+    </div>
+
+    <script>
+        function createParticles(event) {
+            const colors = ['#FF6B6B', '#6B4226', '#FFD166', '#06D6A0', '#118AB2', '#073B4C'];
+            const numParticles = 10;
+
+            for (let i = 0; i < numParticles; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = event.clientX + 'px';
+                particle.style.top = event.clientY + 'px';
+                particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
+
+                document.body.appendChild(particle);
+
+                setTimeout(() => {
+                    particle.remove();
+                }, 1000); // 小块儿显示1秒后消失
+            }
+        }
+    </script>
+
+</body>
+</html>
