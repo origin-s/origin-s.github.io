@@ -1,0 +1,27 @@
+---
+
+layout: post
+title:  "在使用git将jekyll官网下载的网站主题push到github中时，有时会出现如下的警告"
+date:   2024-11-12 19:40:43 +0800
+categories: origin-s update
+
+---
+
+**一：**
+
+warning: in the working copy of 'Gemfile', LF will be replaced by CRLF the next time Git touches it
+
+**原因**：这个警告信息表明，Git 检测到你在工作副本中的 Gemfile 文件使用的是 Unix 风格的换行符（LF，Line Feed），而你的系统或 Git 配置可能设置为在提交时将这些换行符转换为 Windows 风格的换行符（CRLF，Carriage Return Line Feed）。
+
+**解决方法一：**在下载的主题目录下创建一个.gitattributes文件，在文件中添加 * text=auto，然后保存。
+
+**解决方法二：**widows下的gitbash窗口使用 git config --global core.autocrlf  true命令设置自动转换。
+
+**二：**
+
+The following paths are ignored by one of your .gitignore files:
+Gemfile.lock
+
+**原因**：这意味着你的项目中的某个  .gitignore 文件已经配置为忽略  Gemfile.lock 文件。这通常是为了避免将某些文件添加到 Git 仓库中，因为这些文件可能是由构建过程生成的，或者是开发环境特有的，不应该被纳入版本控制。如果非要将这些文件push到远程仓库，可以手动添加。
+
+**解决方法**：git add -f Gemfile.lock

@@ -1,0 +1,11 @@
+---
+
+layout: post
+title:  "个人简历"
+date:   2024-11-12 19:40:43 +0800
+categories: origin-s update
+
+---
+
+***个人简历下载***[lyd个人简历](\assets\docs\个人简历.pdf)
+
